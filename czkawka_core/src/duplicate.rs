@@ -748,7 +748,7 @@ impl DuplicateFinder {
             }
 
             full_hash_results = non_cached_files_to_check
-                .into_par_iter()
+                .into_iter()
                 .map(|(size, vec_file_entry)| {
                     let mut hashmap_with_hash: BTreeMap<String, Vec<FileEntry>> = Default::default();
                     let mut errors: Vec<String> = Vec::new();
@@ -771,7 +771,7 @@ impl DuplicateFinder {
                     }
                     Some((size, hashmap_with_hash, errors))
                 })
-                .while_some()
+                .filter_map(|x| x)
                 .collect();
 
             if self.use_cache {
