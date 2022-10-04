@@ -1,9 +1,5 @@
 name: 🏁 Windows
-on:
-  push:
-  pull_request:
-  schedule:
-    - cron: '0 0 * * 2'
+on: workflow_dispatch
 
 env:
   CARGO_TERM_COLOR: always
